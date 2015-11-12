@@ -11,6 +11,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.ChangeTracking;
 using Microsoft.Data.Entity.Internal;
+using Microsoft.Framework.WebEncoders;
 using TodoList.Web.Models;
 
 namespace TodoList.Web.Controllers
@@ -48,12 +49,12 @@ namespace TodoList.Web.Controllers
             return entry.Entity;
         }
 
-        [HttpPut("{id}")]
-        public async Task<HttpResponseMessage> Put(int id, [FromBody]Todo todo)
+        [HttpPut]
+        public async Task<HttpResponseMessage> Put([FromBody]Todo todo)
         {
             var currentUser = await _userManager.FindByIdAsync(User.GetUserId());
 
-            var entity = _dbContext.Todos.FirstOrDefault(_ => _.Id == id);
+            var entity = _dbContext.Todos.FirstOrDefault(_ => _.Id == todo.Id);
             if (entity == null)
                 return new HttpResponseMessage(HttpStatusCode.NotFound);
             if (entity.User.Id != currentUser.Id)

@@ -10,25 +10,51 @@
     padding-right: 15px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+.center-block {
+    float: none;
+    margin: 0 auto;
 }
 
-/* Carousel */
-.carousel-caption {
-    z-index: 10 !important;
+/* Todo */
+
+body {
+    background-color: #EEEEEE;
 }
 
-    .carousel-caption p {
-        font-size: 20px;
-        line-height: 1.4;
+.todolist {
+    background-color: #FFF;
+    padding: 20px 20px 10px 20px;
+    margin-top: 30px;
+}
+
+    .todolist h1 {
+        margin: 0;
+        padding-bottom: 20px;
+        text-align: center;
     }
 
-@media (min-width: 768px) {
-    .carousel-caption {
-        z-index: 10 !important;
-    }
+li.ui-state-default {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
+
+    li.ui-state-default:last-child {
+        border-bottom: none;
+    }
+
+.todo-footer {
+    background-color: #F4FCE8;
+    margin: 0 -20px -10px -20px;
+    padding: 10px 20px;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+#checkAll {
+    margin-top: 10px;
+}
+
