@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "TodoList.Web"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-TodoList.Web-d11e6239-a8c1-4286-a340-862e7f4e0841;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
