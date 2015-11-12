@@ -57,7 +57,14 @@ namespace TodoList.Web
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             // Add Identity services to the services container.
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(_ =>
+                {
+                    _.Password.RequireDigit = false;
+                    _.Password.RequireLowercase = false;
+                    _.Password.RequireUppercase = false;
+                    _.Password.RequireNonLetterOrDigit = false;
+                    _.Password.RequiredLength = 6;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -81,7 +88,7 @@ namespace TodoList.Web
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
-            // services.AddWebApiConventions();
+            services.AddWebApiConventions();
 
             // Register application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -131,7 +138,7 @@ namespace TodoList.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
 
                 // Uncomment the following line to add a route for porting Web API 2 controllers.
-                // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
+                routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
         }
     }
